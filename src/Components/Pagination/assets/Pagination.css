@@ -1,0 +1,12 @@
+.pagination {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  list-style-type: none;
+}
+
+.pagBtn {
+  border: none;
+  padding: "5px 15px";
+}
+/*# sourceMappingURL=Pagination.css.map */

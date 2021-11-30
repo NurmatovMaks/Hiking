@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { createContext, useReducer } from "react";
+import React, { createContext, useEffect, useReducer, useState } from "react";
 import { API } from "../helpers/API";
 
 export const cartContext = createContext();
@@ -20,7 +20,7 @@ const reducer = (state = INIT_STATE, action) => {
 };
 const CartContextProvider = (props) => {
   const [state, dispatch] = useReducer(reducer, INIT_STATE);
-  const getTickets = async () => {
+  const getClientTickets = async () => {
     try {
       let filter = window.location.search;
       const response = await axios(`${API}${filter}`);
@@ -30,6 +30,7 @@ const CartContextProvider = (props) => {
         payload: response.data,
       };
       dispatch(action);
+      resetCurrentPage();
     } catch (e) {
       console.log(e);
     }
@@ -47,13 +48,43 @@ const CartContextProvider = (props) => {
       console.log(error);
     }
   };
+
+  // pagination
+
+  const [post, setPost] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [postPerPage] = useState(10);
+  useEffect(() => {
+    if (state.tickets) {
+      const data = state.tickets;
+      setPost(data);
+    }
+  }, [state.tickets]);
+
+  const numberOfLastPost = currentPage * postPerPage;
+  const numberOfFirstPost = numberOfLastPost - postPerPage;
+  const currentPost = post.slice(numberOfFirstPost, numberOfLastPost);
+  const totalPosts = post.length;
+  const handlePage = (newPage) => {
+    setCurrentPage(newPage);
+  };
+  function resetCurrentPage() {
+    setCurrentPage(1);
+  }
   return (
     <cartContext.Provider
       value={{
-        getTickets,
+        getClientTickets,
+
         getDetails,
+        handlePage,
         tickets: state.tickets,
         ticketDetails: state.ticketDetails,
+        currentPost,
+        totalPosts,
+        postPerPage,
+        currentPage,
+        post,
       }}
     >
       {props.children}

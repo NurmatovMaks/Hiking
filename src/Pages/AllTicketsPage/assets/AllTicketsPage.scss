@@ -1,5 +1,21 @@
 .allCard {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
   margin-top: 5%;
+}
+.all {
+  margin-top: 5%;
+}
+.alaPagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 2%;
+}
+.search {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-top: 3%;
+  input {
+    border-radius: 5px;
+  }
 }

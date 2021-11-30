@@ -4,8 +4,6 @@ import aboutImage from "../../images/about.png";
 import imgChel from "../../images/11.jpg";
 import imgPriroda from "../../images/12.jpg";
 import imgNews1 from "../../images/2.jpg";
-import { Link } from "react-router-dom";
-import redMan from "../../images/6.jpg";
 import FlipCard from "../FlipCrad/FlipCard";
 
 const ContentBox = () => {

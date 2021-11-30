@@ -44,6 +44,23 @@ const AdminContextProvider = (props) => {
     }
   };
 
+  const get10Tickets = async () => {
+    try {
+      const response = await axios(API, {
+        params: {
+          _limit: 10,
+        },
+      });
+      let action = {
+        type: "GET_TICKETS",
+        payload: response.data,
+      };
+      dispatch(action);
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
   // update
 
   const getTicketsToEdit = async (id) => {
@@ -88,6 +105,7 @@ const AdminContextProvider = (props) => {
       value={{
         addTicket,
         getTickets,
+        get10Tickets,
         getTicketsToEdit,
         saveEditedTicket,
         deleteTicket,

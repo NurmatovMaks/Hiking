@@ -1,9 +1,10 @@
 import React, { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { adminContext } from "../../context/AdminContext";
+import Pagination from "../Pagination/Pagination";
 
 export const FlipCard = () => {
-  const { tickets, getTickets } = useContext(adminContext);
+  const { tickets, getTickets, get10Tickets } = useContext(adminContext);
   const monthes = [
     "January",
     "February",
@@ -19,14 +20,14 @@ export const FlipCard = () => {
     "December",
   ];
   useEffect(() => {
-    getTickets();
+    get10Tickets();
   }, []);
   return (
     <div className="tour">
       {tickets ? (
         tickets.map((item) => (
           <>
-            <a className="link-card" href="#">
+            <a className="link-card" href="http://localhost:3000/all-tickets">
               <div
                 className="tour-img"
                 style={{
@@ -40,7 +41,7 @@ export const FlipCard = () => {
                       {item.data.slice(8, 10)}
                     </div>
                     <div className="portfolio-month">
-                      {item.data.slice(5, 7)}
+                      {monthes[parseInt(item.data.slice(5, 7) - 1)]}
                     </div>
                     <div className="portfolio-year">
                       {item.data.slice(0, 4)}
@@ -58,7 +59,9 @@ export const FlipCard = () => {
               <div className="portfolio">
                 <div className="portfolio-time">
                   <div className="portfolio-day">{item.data.slice(8, 10)}</div>
-                  <div className="portfolio-month">{item.data.slice(5, 7)}</div>
+                  <div className="portfolio-month">
+                    {monthes[parseInt(item.data.slice(5, 7) - 1)]}
+                  </div>
                   <div className="portfolio-year">{item.data.slice(0, 4)}</div>
                 </div>
                 <div className="portfolio-details">
