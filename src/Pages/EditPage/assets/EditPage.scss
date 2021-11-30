@@ -1,0 +1,16 @@
+.edit-page {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 3%;
+
+  // background: url(https://clipart-db.ru/file_content/rastr/background_039.jpg);
+}
+.edit-page form {
+  display: flex;
+  flex-direction: column;
+  background: #ed6427;
+
+  width: 400px;
+}

@@ -1,0 +1,50 @@
+header#header {
+  text-align: center;
+  width: 100%;
+  z-index: 2;
+  position: relative;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+  display: block;
+}
+
+header#header .main-header {
+  background: url(../../../images/hero.jpg);
+  background-size: cover;
+  overflow: hidden;
+  padding: 120px 0;
+  position: relative;
+}
+
+header .main-header:before {
+  position: absolute;
+  content: "";
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.55);
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+header .heading-text {
+  position: relative;
+}
+
+header .heading-text h2 {
+  font-family: "Lobster", cursive;
+  font-size: 65px;
+  color: #fff;
+  font-weight: 400;
+  letter-spacing: 5px;
+  margin: 40px 0 20px;
+}
+
+header .heading-text p {
+  color: #fff;
+  font-size: 25px;
+  font-family: "Poppins", sans-serif;
+  line-height: 35px;
+}
+/*# sourceMappingURL=Header.css.map */

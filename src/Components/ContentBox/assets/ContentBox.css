@@ -1,0 +1,188 @@
+.block-box {
+  padding: 0;
+  margin: 5% 0;
+}
+
+.content-box .header {
+  text-align: center;
+  margin: 20px 0 80px;
+}
+
+.content-box .header h2 {
+  text-transform: uppercase;
+  font-size: 30px;
+  line-height: 40px;
+  letter-spacing: 15px;
+  font-weight: 500;
+  color: #141414;
+  margin-bottom: 25px;
+}
+
+.box1 {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 40%;
+      grid-template-columns: 1fr 40%;
+}
+
+.box2 {
+  position: relative;
+  background-image: url("../../../images/bg-2.jpg");
+  height: 650px;
+  background-size: cover;
+}
+
+.box2 .box-4el {
+  position: absolute;
+  top: 12%;
+  left: 11%;
+  width: 40%;
+  height: 40%;
+}
+
+.box2 .box-priroda {
+  position: absolute;
+  top: 45%;
+  left: 46%;
+  width: 29%;
+}
+
+.box2 .priroda-pic {
+  width: 377px;
+  height: 251px;
+}
+
+.box2 .btnOurService {
+  position: absolute;
+  top: -48%;
+  left: 21%;
+  padding: 12px 30px;
+  background: black;
+  color: white;
+  border: none;
+  font-weight: 700;
+  letter-spacing: 2px;
+  font-size: 14px;
+}
+
+.box2 .btnOurService:hover {
+  background: white;
+  color: black;
+  -webkit-transition: 1s;
+  transition: 1s;
+  border: 1px solid black;
+}
+
+.news-box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  margin: 3% 0;
+}
+
+.news-box .about-news {
+  width: 25%;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 5px;
+}
+
+.news-box .about-news:hover {
+  -webkit-transform: translateY(-5px);
+          transform: translateY(-5px);
+  -webkit-box-shadow: 4px 4px 19px -1px #000000;
+          box-shadow: 4px 4px 19px -1px #000000;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.tour {
+  background-image: url("../../../images/bg-3.jpg");
+  opacity: 1;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+}
+
+.tour .link-card {
+  width: 100%;
+  height: 300px;
+  position: relative;
+  border: 0.5px solid white;
+  max-width: 100%;
+  min-height: 100%;
+}
+
+.tour-img {
+  opacity: 0;
+  width: 100%;
+  height: 300px;
+  position: absolute;
+  z-index: 2;
+}
+
+.tour-img:hover {
+  opacity: 1;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.tour-img .portfolio .portfolio-time {
+  margin-bottom: 50%;
+  margin-left: 6%;
+}
+
+.tour-img .portfolio-details {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: end;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: end;
+  margin-top: 35%;
+}
+
+.portfolio {
+  position: absolute;
+  z-index: 1;
+  top: 1%;
+  width: 95%;
+}
+
+.portfolio .portfolio-time {
+  margin-bottom: 55%;
+  margin-left: 6%;
+}
+
+.portfolio .portfolio-details {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: end;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: end;
+  margin-top: 35%;
+}
+
+.portfolio:hover {
+  z-index: 3;
+}
+/*# sourceMappingURL=ContentBox.css.map */
