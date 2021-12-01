@@ -1,10 +1,8 @@
 import React, { useContext, useEffect } from "react";
-import { Link } from "react-router-dom";
 import { adminContext } from "../../context/AdminContext";
-import Pagination from "../Pagination/Pagination";
 
 export const FlipCard = () => {
-  const { tickets, getTickets, get10Tickets } = useContext(adminContext);
+  const { tickets, get10Tickets } = useContext(adminContext);
   const monthes = [
     "January",
     "February",

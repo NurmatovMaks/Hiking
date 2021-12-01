@@ -31,7 +31,7 @@ const SignUpModal = (props) => {
 
   return (
     <>
-      <Modal show={props.show} onHide={props.handleClose}>
+      <Modal className="sign-up" show={props.show} onHide={props.handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Регистрация</Modal.Title>
         </Modal.Header>

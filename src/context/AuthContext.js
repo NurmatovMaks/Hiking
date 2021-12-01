@@ -26,7 +26,6 @@ const reducer = (state = INIT_STATE, action) => {
 const AuthContextProvider = (props) => {
   const [state, dispatch] = useReducer(reducer, INIT_STATE);
 
-  console.log(props);
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       if (user) {

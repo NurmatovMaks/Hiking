@@ -1,4 +1,22 @@
 {
+  "comments": [
+    {
+      "text": "Hello",
+      "owner": "maksatlevsha@gmail.com",
+      "doctorId": "3",
+      "createdAt": "2021-12-01T08:30:14.919Z",
+      "createdAtMs": 1638347414919,
+      "id": 1
+    },
+    {
+      "text": "asjdhadjahfaf",
+      "owner": "maksatlevsha@gmail.com",
+      "doctorId": "3",
+      "createdAt": "2021-12-01T08:38:15.990Z",
+      "createdAtMs": 1638347895990,
+      "id": 2
+    }
+  ],
   "tickets": [
     {
       "image": "https://traveltimes.ru/wp-content/uploads/2021/05/photo_2019-05-08_00-08-07.jpg",

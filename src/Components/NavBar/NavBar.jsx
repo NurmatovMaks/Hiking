@@ -6,6 +6,7 @@ import SignUpModal from "../authmodal/SignUpModal";
 import SignInModal from "../authmodal/SignInModal";
 import { authContext } from "../../context/AuthContext";
 import { useNavigate } from "react-router";
+import iconFavorit from "../../images/icons/iconNavbar.png";
 
 const NavBar = () => {
   const [show, setShow] = React.useState(false);
@@ -19,32 +20,53 @@ const NavBar = () => {
 
   let profile;
   if (user) {
-    profile = <Button onClick={() => logOut()}>LogOut</Button>;
+    profile = (
+      <li className="last" style={{ color: "#000" }}>
+        <a
+          href="http://localhost:3000/"
+          color="inherit"
+          onClick={() => logOut()}
+          style={{
+            fontFamily: "Francois One, sans-serif",
+            letterSpacing: "1px",
+            fontSize: "16px",
+          }}
+        >
+          Log Out
+        </a>
+      </li>
+    );
+    {
+    }
   } else {
     profile = (
       <>
-        <Button
-          color="inherit"
-          onClick={handleShowLogin}
-          style={{
-            fontFamily: "Francois One, sans-serif",
-            letterSpacing: "1px",
-            fontSize: "16px",
-          }}
-        >
-          Sign In
-        </Button>
-        <Button
-          color="inherit"
-          onClick={handleShow}
-          style={{
-            fontFamily: "Francois One, sans-serif",
-            letterSpacing: "1px",
-            fontSize: "16px",
-          }}
-        >
-          Sign Up
-        </Button>
+        <li className="last" style={{ color: "#000" }}>
+          <a
+            color="inherit"
+            onClick={handleShowLogin}
+            style={{
+              fontFamily: "Francois One, sans-serif",
+              letterSpacing: "1px",
+              fontSize: "16px",
+            }}
+          >
+            Sign In
+          </a>
+        </li>
+        <li className="last" style={{ color: "#000" }}>
+          <a
+            color="inherit"
+            onClick={handleShow}
+            style={{
+              fontFamily: "Francois One, sans-serif",
+              letterSpacing: "1px",
+              fontSize: "16px",
+            }}
+          >
+            Sign Up
+          </a>
+        </li>
       </>
     );
   }
@@ -118,9 +140,18 @@ const NavBar = () => {
               <span>About</span>
             </a>
           </li>
+          <li>
+            <a href="single.html" style={{ marginTop: "-7px" }}>
+              <img
+                src={iconFavorit}
+                style={{ width: "30px", height: "30px" }}
+                alt=""
+              />
+            </a>
+          </li>
           {temp}
+          {profile}
         </ul>
-        {profile}
       </div>
       <SignUpModal handleClose={handleClose} show={show} />
       <SignInModal handleCloseLogin={handleCloseLogin} showLogin={showLogin} />

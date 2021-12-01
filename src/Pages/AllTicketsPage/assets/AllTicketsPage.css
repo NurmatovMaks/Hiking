@@ -6,6 +6,20 @@
   margin-top: 5%;
 }
 
+@media screen and (max-width: 768px) {
+  .allCard {
+    -ms-grid-columns: 1fr 1fr;
+        grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .allCard {
+    -ms-grid-columns: 1fr;
+        grid-template-columns: 1fr;
+  }
+}
+
 .all {
   margin-top: 5%;
 }
@@ -28,7 +42,16 @@
   margin-top: 3%;
 }
 
-.search input {
-  border-radius: 5px;
+@media screen and (max-width: 425px) {
+  .search .search-input {
+    width: 85%;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .search {
+    -ms-grid-columns: 1fr;
+        grid-template-columns: 1fr;
+  }
 }
 /*# sourceMappingURL=AllTicketsPage.css.map */

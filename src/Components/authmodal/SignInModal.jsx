@@ -28,6 +28,7 @@ export const SignInModal = (props) => {
   return (
     <>
       <Modal
+        className="sign-in"
         show={props.showLogin}
         onHide={props.handleCloseLogin}
         backdrop="static"

@@ -15,10 +15,13 @@ import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
+import iconCard from "../../images/icons/iconCard.png";
+import { Link } from "react-router-dom";
 
 const AllTicketsPage = () => {
   const { tickets, getTickets } = useContext(adminContext);
-  const { currentPost, getClientTickets } = useContext(cartContext);
+  const { currentPost, getClientTickets, chekInFavorit, addAndDelInFavorit } =
+    useContext(cartContext);
   const [info, setInfo] = useState("");
   const navigate = useNavigate();
 
@@ -58,6 +61,7 @@ const AllTicketsPage = () => {
     <div className="allTickets">
       <div className="search">
         <input
+          className="search-input"
           onChange={(e) => filterTickets("q", e.target.value)}
           style={{ borderRadius: "10px", marginLeft: "10px" }}
           type="text"
@@ -87,9 +91,9 @@ const AllTicketsPage = () => {
               label="Ala-Archa"
             />
             <FormControlLabel
-              value="Altyn-Arashan"
+              value="Toktogul"
               control={<Radio />}
-              label="Altyn-Arashan"
+              label="Toktogul"
             />
           </RadioGroup>
         </FormControl>
@@ -101,13 +105,15 @@ const AllTicketsPage = () => {
               <div className="media">
                 <div key={item.id}>
                   <Card sx={{ maxWidth: 300, minWidth: 300 }}>
-                    <CardMedia
-                      component="img"
-                      height="140"
-                      style={{ objectFit: "contain" }}
-                      image={item.image}
-                      alt=""
-                    />
+                    <Link to={`/details/${item.id}`}>
+                      <CardMedia
+                        component="img"
+                        height="140"
+                        style={{ objectFit: "contain" }}
+                        image={item.image}
+                        alt=""
+                      />
+                    </Link>
                     <CardContent>
                       <Typography gutterBottom variant="h5" component="div">
                         {item.info}
@@ -121,7 +127,23 @@ const AllTicketsPage = () => {
                       </Typography>
                     </CardContent>
                     <CardActions>
-                      <p>ssssss</p>
+                      {chekInFavorit(item.id) ? (
+                        <Button
+                          onClick={() => addAndDelInFavorit(item)}
+                          color="warning"
+                          variant="contained"
+                        >
+                          <img src={iconCard} width="20px" alt="" />
+                        </Button>
+                      ) : (
+                        <Button
+                          onClick={() => addAndDelInFavorit(item)}
+                          color="warning"
+                          variant="outlined"
+                        >
+                          <img src={iconCard} width="20px" alt="" />
+                        </Button>
+                      )}
                     </CardActions>
                   </Card>
                 </div>

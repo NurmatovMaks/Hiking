@@ -5,4 +5,20 @@
       grid-template-columns: 1fr 1fr 1fr 1fr;
   margin-top: 5%;
 }
+
+@media screen and (max-width: 768px) {
+  .mainCard {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 1fr 1fr;
+        grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .mainCard {
+    -ms-grid-columns: 1fr;
+        grid-template-columns: 1fr;
+  }
+}
 /*# sourceMappingURL=MediaCard.css.map */

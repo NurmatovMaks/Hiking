@@ -7,6 +7,10 @@ export const cartContext = createContext();
 const INIT_STATE = {
   tickets: null,
   ticketDetails: null,
+  ticketsCountInCart: localStorage.getItem("favorit")
+    ? JSON.parse(localStorage.getItem("favorit")).tickets.length
+    : 0,
+  favorit: null,
 };
 const reducer = (state = INIT_STATE, action) => {
   switch (action.type) {
@@ -14,6 +18,10 @@ const reducer = (state = INIT_STATE, action) => {
       return { ...state, tickets: action.payload };
     case "GET_DETAILS":
       return { ...state, ticketDetails: action.payload };
+    case "Add_Del_In-Cart":
+      return { ...state, ticketsCountInCart: action.payload };
+    case "GET_FAVORIT":
+      return { ...state, favorit: action.payload };
     default:
       return state;
   }
@@ -71,6 +79,83 @@ const CartContextProvider = (props) => {
   function resetCurrentPage() {
     setCurrentPage(1);
   }
+
+  const addAndDelInFavorit = (ticket) => {
+    let favorit = JSON.parse(localStorage.getItem("favorit"));
+    console.log(favorit);
+
+    if (!favorit) {
+      favorit = {
+        tickets: [],
+      };
+    }
+    let tour = {
+      ticket: ticket,
+      count: 1,
+    };
+    let chekArr = favorit.tickets.filter((i) => {
+      return i.ticket.id === ticket.id;
+    });
+    if (chekArr.length === 0) {
+      favorit.tickets.push(tour);
+    } else {
+      favorit.tickets = favorit.tickets.filter((i) => {
+        return i.ticket.id !== ticket.id;
+      });
+    }
+    localStorage.setItem("favorit", JSON.stringify(favorit));
+    let action = {
+      type: "Add_Del_In-Cart",
+      payload: favorit.tickets.length,
+    };
+    dispatch(action);
+  };
+
+  const chekInFavorit = (id) => {
+    let favorit = JSON.parse(localStorage.getItem("favorit"));
+    if (!favorit) {
+      favorit = {
+        tickets: [],
+      };
+    }
+    let chekArr = favorit.tickets.filter((i) => {
+      return i.ticket.id === id;
+    });
+    if (chekArr.length === 0) {
+      return false;
+    } else {
+      return true;
+    }
+  };
+
+  const getFavorit = () => {
+    let favorit = JSON.parse(localStorage.getItem("favorit"));
+    if (!favorit) {
+      favorit = {
+        tickets: [],
+      };
+    }
+    let action = {
+      type: "GET_FAVORIT",
+      payload: favorit,
+    };
+    dispatch(action);
+  };
+  const changeCountInFavorit = (count, id) => {
+    if (count < 1) {
+      return;
+    }
+    let favorit = JSON.parse(localStorage.getItem("favorit"));
+    favorit.tickets = favorit.tickets.map((i) => {
+      if (i.ticket.id === id) {
+        i.count = count;
+      }
+      return i;
+    });
+    localStorage.setItem("favorit", JSON.stringify(favorit));
+    getFavorit();
+  };
+
   return (
     <cartContext.Provider
       value={{
@@ -78,8 +163,14 @@ const CartContextProvider = (props) => {
 
         getDetails,
         handlePage,
+        changeCountInFavorit,
+        getFavorit,
+        addAndDelInFavorit,
+        chekInFavorit,
         tickets: state.tickets,
         ticketDetails: state.ticketDetails,
+        ticketsCountInCart: state.ticketsCountInCart,
+        favorit: state.favorit,
         currentPost,
         totalPosts,
         postPerPage,
